@@ -1,12 +1,17 @@
 New Image
 
-<%= form_for(@image) do |f| %>
+<%= form_for(@image, html: { multipart: true }) do |f| %>
 
 	<div class="well">
 
 		<div class="field">
-			<%= f.label :link %>:
-			<%= f.text_field :link, size: 100 %>
+			<%= f.label :name %>:
+			<%= f.text_field :name, size: 100 %>
+		</div><br>
+
+
+		<div class="picture">
+		<%= f.file_field :link, accept: 'image/jpeg,image/gif,image/png,image/bmp' %>
 		</div><br>
 
 		<div class="actions">

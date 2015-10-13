@@ -1,6 +1,6 @@
 class Entry < ActiveRecord::Base
-	has_many :images
-	has_many :questions
-
+	belongs_to :image
+	belongs_to :question
+	has_many :user_responses
 
 end

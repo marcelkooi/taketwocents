@@ -1,0 +1,12 @@
+Show Entry 
+
+<h3><%= @entry.title %></h3>
+
+<%= image_tag(@entry.image.link, size: '150') %>
+
+<p><strong>Question:</strong> <%= @entry.question.sentence %> </p>
+
+<% if user_signed_in? %>
+	<%= link_to "Yes", vote_entry_path(@entry, response: true), method: :post %>
+	<%= link_to "No", vote_entry_path(@entry, response: false), method: :post %>
+<% end %>

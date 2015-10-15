@@ -11,25 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151013202008) do
+ActiveRecord::Schema.define(version: 20151015211908) do
 
   create_table "entries", force: :cascade do |t|
+    t.integer  "stack_id"
     t.string   "title"
-    t.integer  "question_id"
-    t.integer  "image_id"
+    t.string   "question"
+    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "images", force: :cascade do |t|
-    t.string   "link"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.string   "sentence"
+  create_table "stacks", force: :cascade do |t|
+    t.string   "title"
+    t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,25 +39,12 @@ ActiveRecord::Schema.define(version: 20151013202008) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.integer  "age"
-    t.string   "gender"
-    t.string   "ethnicity"
-    t.boolean  "admin",                  default: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.string  "username"
+    t.string  "password"
+    t.boolean "admin"
+    t.string  "gender"
+    t.integer "age"
+    t.string  "ethnicity"
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

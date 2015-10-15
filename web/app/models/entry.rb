@@ -1,6 +1,11 @@
 class Entry < ActiveRecord::Base
-	belongs_to :image
-	belongs_to :question
+	
 	has_many :user_responses
+	belongs_to :stack
+
+	validates :image, presence: true
+	validates :question, presence: true
+
+	mount_uploader :image, PictureUploader
 
 end

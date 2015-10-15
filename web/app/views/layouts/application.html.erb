@@ -3,12 +3,16 @@
 <head>
   <title>TwoCents</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %> 
   <%= csrf_meta_tags %>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
 
-
+  <!-- <%= render 'layouts/navigation' %> -->
 
 	<div class="container">
 		<div class="row">
@@ -17,6 +21,8 @@
 			<%= yield %>
 		</div>
 	</div>
+
+  <!-- <%= render 'layouts/footer' %> -->
 
 </body>
 </html>

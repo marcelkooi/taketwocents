@@ -1,26 +1,20 @@
 class EntriesController < ApplicationController
-	before_action :authenticate_user!
-
-	def index
-		@entries = Entry.all
-	end
 
 	def show
 		@entry = Entry.find(params[:id])
-		@image = @entry.image_id
-	end
-
-	def new
-		@entry = Entry.new
+		@entry_show_time = Time.now
 	end
 
 	def create
-		@image = Image.find(params[:entry][:image_id])
-		@question = Question.find(params[:entry][:question_id])
-		@entry = Entry.new(entry_params)
+		@stack = Stack.find(params[:stack_id])
+		@entry = @stack.entry.create(entry_params)
 
-		@entry.save
-		redirect_to entries_path
+		if @entry.save
+			redirect_to entries_path
+		else
+			redirect_to stack_path
+		end
+
 	end
 
 	def edit
@@ -39,14 +33,15 @@ class EntriesController < ApplicationController
 
 	def vote
 		@entry = Entry.find(params[:id])
-		response = UserResponse.create(response: params[:response], entry: @entry, user: current_user )
+		time = Time.now - params[:entry_show_time].to_datetime
+		UserResponse.create(response: params[:response], entry: @entry, user: current_user, response_time: time )
 		redirect_to entry_path(@entry.id + 1)
 	end
 
 
 	private
 	  def entry_params
-	    params.require(:entry).permit(:title, :question_id, :image_id)
+	    params.require(:entry).permit(:title, :question, :image)
 	  end
 
 end

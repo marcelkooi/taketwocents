@@ -7,6 +7,6 @@ Show Entry
 <p><strong>Question:</strong> <%= @entry.question.sentence %> </p>
 
 <% if user_signed_in? %>
-	<%= link_to "Yes", vote_entry_path(@entry, response: true), method: :post %>
-	<%= link_to "No", vote_entry_path(@entry, response: false), method: :post %>
+	<%= link_to "Yes", vote_entry_path(@entry, entry_show_time: @entry_show_time, response: true), method: :post %>
+	<%= link_to "No", vote_entry_path(@entry, entry_show_time: @entry_show_time, response: false), method: :post %>
 <% end %>

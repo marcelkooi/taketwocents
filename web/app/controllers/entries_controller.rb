@@ -1,18 +1,19 @@
 class EntriesController < ApplicationController
 
 	def show
-		@entry = Entry.find(params[:id])
+		@stack = Stack.find(params[:stack_id])
+		@entry = @stack.entries.find(params[:id])
 		@entry_show_time = Time.now
 	end
 
 	def create
 		@stack = Stack.find(params[:stack_id])
-		@entry = @stack.entry.create(entry_params)
+		@entry = @stack.entries.create(entry_params)
 
 		if @entry.save
-			redirect_to entries_path
+			redirect_to @stack
 		else
-			redirect_to stack_path
+			redirect_to root_path
 		end
 
 	end
@@ -32,10 +33,11 @@ class EntriesController < ApplicationController
 	end
 
 	def vote
-		@entry = Entry.find(params[:id])
+		@stack = Stack.find(params[:stack_id])
+		@entry = @stack.entries.find(params[:id])
 		time = Time.now - params[:entry_show_time].to_datetime
-		UserResponse.create(response: params[:response], entry: @entry, user: current_user, response_time: time )
-		redirect_to entry_path(@entry.id + 1)
+		UserResponse.create(response: params[:response], entry: @entry, user: User.find(1), response_time: time )
+		redirect_to stack_entry_path(@stack, @entry.id + 1)
 	end
 
 

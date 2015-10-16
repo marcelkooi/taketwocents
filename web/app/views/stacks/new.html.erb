@@ -1,1 +1,20 @@
 New Stack
+
+<br><br>
+
+<%= form_for(@stack) do |f| %>
+	<p>
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+	</p>
+
+	<p>
+		<%= f.label :code %>
+		<%= f.text_field :code %>
+	</p>
+
+	<p>
+		<%= f.submit class: "btn btn-success" %>
+	</p>
+
+<% end %>

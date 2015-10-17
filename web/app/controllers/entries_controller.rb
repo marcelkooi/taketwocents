@@ -36,10 +36,11 @@ class EntriesController < ApplicationController
 		@stack = Stack.find(params[:stack_id])
 		@entry = @stack.entries.find(params[:id])
 		time = Time.now - params[:entry_show_time].to_datetime
-		UserResponse.create(response: params[:response], entry: @entry, user: User.find(1), response_time: time )
+		UserResponse.create(entry: @entry, user: current_user, response: params[:response], response_time: time )
 		if Entry.exists? id: @entry.id + 1
 			redirect_to stack_entry_path(@stack, @entry.id + 1)
 		else
+			session[:user_id] = nil
 			redirect_to root_path
 		end
 	end

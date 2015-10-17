@@ -7,6 +7,7 @@ class UserResponse < ActiveRecord::Base
 
 	validates :user, presence: true
 	validates :entry, presence: true
-	validates :response, presence: true
+	validates :response, inclusion: { in: [true, false] }
+	validates :response, exclusion: { in: [nil] }
 
 end

@@ -11,7 +11,12 @@ Rails.application.routes.draw do
 
   root 'pages#home'
   get '/about', to: 'pages#about'
+  get '/admin', to: 'pages#admin'
+  get '/thankyou', to: 'pages#thankyou'
 
+  get '/login', to: 'logins#new'
+  post '/login', to: 'logins#create'
+  get '/logout', to: 'logins#destroy'
 
 
 

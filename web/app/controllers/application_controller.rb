@@ -16,4 +16,16 @@ class ApplicationController < ActionController::Base
  #    	super || valid_authenticity_token?(session, request.headers['X-XSRF-TOKEN'])
  #  	end
 
+helper_method :current_user, :logged_in?
+
+	def current_user
+		@current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+  
+  def logged_in?
+    !!current_user 
+	end
+
+
+
 end

@@ -1,4 +1,5 @@
 class StacksController < ApplicationController
+	before_action :admin_user, only [:new, :create, :edit, :update]
 
 	def index
 		@stacks = Stack.all

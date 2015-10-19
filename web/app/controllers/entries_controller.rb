@@ -1,4 +1,5 @@
 class EntriesController < ApplicationController
+	before_action :admin_user, only: [:create, :edit, :update]
 
 	def show
 		@stack = Stack.find(params[:stack_id])

@@ -1,43 +1,46 @@
-Show Stack
-
-<br><br>
-<p>
-	Title: <%= @stack.title %>
-</p>
-
-<p>
-	Code: <%= @stack.code %>
-</p>
-
-<p>
-	Entries: 
-		<% @stack.entries.each do |entry| %>
-			<%= entry.title %> <br>
-			<%= entry.question %> <br>
-			<%= image_tag(entry.image) %> <br><br>
-		<% end %>
-</p>
-
-<br><br>
-
-	<%= form_for([@stack, @stack.entries.build]) do |f| %>
-
+<div class="container">
+	<div class="row">
+		<h1>Show Stack</h1>
+		<br><br>
 		<p>
-			<%= f.label :title %>
-			<%= f.text_field :title %>
+			Title: <%= @stack.title %>
 		</p>
 
 		<p>
-			<%= f.label :question %>
-			<%= f.text_field :question %>
+			Code: <%= @stack.code %>
 		</p>
 
 		<p>
-	    <%= f.file_field :image, accept: 'image/jpeg, image/gif, image/png' %>
-	  </p>
+			Entries: 
+				<% @stack.entries.each do |entry| %>
+					<%= entry.title %> <br>
+					<%= entry.question %> <br>
+					<%= image_tag(entry.image) %> <br><br>
+				<% end %>
+		</p>
 
-	  <p>
-	  <%= f.submit class: "btn btn-success" %>
-	  </p>
+		<br><br>
 
-	<% end %>
+			<%= form_for([@stack, @stack.entries.build]) do |f| %>
+
+				<p>
+					<%= f.label :title %>
+					<%= f.text_field :title %>
+				</p>
+
+				<p>
+					<%= f.label :question %>
+					<%= f.text_field :question %>
+				</p>
+
+				<p>
+			    <%= f.file_field :image, accept: 'image/jpeg, image/gif, image/png' %>
+			  </p>
+
+			  <p>
+			  <%= f.submit class: "btn btn-success" %>
+			  </p>
+
+			<% end %>
+	</div>
+</div>

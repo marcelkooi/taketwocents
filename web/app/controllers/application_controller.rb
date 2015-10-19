@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
 
   
- #  protect_from_forgery with: :exception
+  protect_from_forgery with: :exception
 
  #  after_filter :set_csrf_cookie_for_ng
 
@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
  #    	super || valid_authenticity_token?(session, request.headers['X-XSRF-TOKEN'])
  #  	end
 
-helper_method :current_user, :logged_in?
+helper_method :current_user, :logged_in?, :admin_user
 
 	def current_user
 		@current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -24,6 +24,10 @@ helper_method :current_user, :logged_in?
   
   def logged_in?
     !!current_user 
+	end
+
+	def admin_user
+		redirect_to root_path unless current_user && current_user.admin?
 	end
 
 

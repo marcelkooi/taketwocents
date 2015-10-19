@@ -4,8 +4,8 @@ class LoginsController < ApplicationController
 	end
 
 	def create
-		@user = User.find(params[:id])
-		if user.admin? && user.authenticate(params[:password])
+		user = User.find_by_username(params[:username])
+		if user && user.admin? && user.password == params[:password]
 			session[:user_id] = user.id
 			redirect_to admin_path
 		else

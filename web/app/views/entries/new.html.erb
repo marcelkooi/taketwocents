@@ -1,28 +1,31 @@
-New Entry
+<div class="container">
+	<div class="row">
+		<h1>New Entry</h1>
 
-<%= form_for(@entry) do |f| %>
+		<%= form_for(@entry) do |f| %>
 
-	<div class="well">
+			<div class="well">
 
-	  <div class="field">
-	    <%= f.label :title %><br>
-	    <%= f.text_field :title %>
-	  </div>
+			  <div class="field">
+			    <%= f.label :title %><br>
+			    <%= f.text_field :title %>
+			  </div>
 
-	  <div class="field">
-	    <%= f.label :question_id %><br>
-	    <%= collection_select(:entry, :question_id, Question.all, :id, :sentence, {prompt: true}) %>
-	  </div>
-	  
-	  <div class="field">
-	    <%= f.label :image_id %><br>
-	    <%= collection_select(:entry, :image_id, Image.all, :id, :link, {prompt: true}) %>
-	  </div>
+			  <div class="field">
+			    <%= f.label :question_id %><br>
+			    <%= collection_select(:entry, :question_id, Question.all, :id, :sentence, {prompt: true}) %>
+			  </div>
+			  
+			  <div class="field">
+			    <%= f.label :image_id %><br>
+			    <%= collection_select(:entry, :image_id, Image.all, :id, :link, {prompt: true}) %>
+			  </div>
 
-	  <br>
-	  <div class="actions">
-	    <%= f.submit class: "btn btn-success" %>
-	  </div>
+			  <br>
+			  <div class="actions">
+			    <%= f.submit class: "btn btn-success" %>
+			  </div>
+			</div>
+		<% end %>
 	</div>
-<% end %>
-
+</div>

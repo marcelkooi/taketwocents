@@ -1,20 +1,22 @@
-New User
-<br><br>
-<%= form_for(@user) do |f| %>
-	<div>
-		<%= f.label :age %>
-		<%= f.number_field :age %> <br><br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4 well centered">
+			<h3>New User</h3>
+			<%= form_for(@user) do |f| %>
+				<div>
+					<%= f.label :age %> <br>
+					<%= f.number_field :age, class: 'col-md-6 col-md-offset-3' %> <br><br>
+				</div>
+					<%= f.label :gender %> <br>
+					<%= f.select(:gender, [['Male', 1], ['Female', 2], ['Other', 3]], style: 'width:350px', prompt: 'Please select') %> <br><br>
+				<div>
+					<%= f.label :ethnicity %> <br>
+					<%= f.select(:ethnicity, [['Caucasian', 1], ['African American', 2], ['Etc', 3]], prompt: 'Please select') %> <br><br>
+				</div>
+				<div>
+					<%= f.submit class: "btn btn-success btn-lg" %> 
+				</div>
+			<% end %>
+		</div>
 	</div>
-		<%= f.label :gender %>
-		<%= f.select(:gender, [['Male', 1], ['Female', 2], ['Other', 3]], prompt: 'Please select') %> <br><br>
-	<div>
-		<%= f.label :ethnicity %>
-		<%= f.select(:ethnicity, [['Caucasian', 1], ['African American', 2], ['Etc', 3]], prompt: 'Please select') %> <br><br>
-	</div>
-
-	<div>
-		<%= f.submit class: "btn btn-success" %> 
-	</div>
-
-
-<% end %>
+</div>

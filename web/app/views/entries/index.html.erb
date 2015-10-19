@@ -1,15 +1,19 @@
-Index of Entries
-<br><br>
-<% @entries.each do |entry| %>
-	<div class="well">
-		<div class="row">
-			<div class="col-md-8">
-				<strong>Title:</strong> <%= entry.title %> <br>
-				<strong>Question:</strong> <%= entry.question.sentence %>
+<div class="container">
+	<div class="row">		
+		<h1>Index of Entries</h1>
+		<br><br>
+		<% @entries.each do |entry| %>
+			<div class="well">
+				<div class="row">
+					<div class="col-md-8">
+						<strong>Title:</strong> <%= entry.title %> <br>
+						<strong>Question:</strong> <%= entry.question.sentence %>
+					</div>
+					<div class="col-md-4">
+						<%= image_tag(entry.image.link, size: '150') %> 
+					</div>
+				</div>
 			</div>
-			<div class="col-md-4">
-				<%= image_tag(entry.image.link, size: '150') %> 
-			</div>
-		</div>
+		<% end %>
 	</div>
-<% end %>
+</div>

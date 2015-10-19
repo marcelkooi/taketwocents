@@ -7,7 +7,7 @@ class UserResponsesController < ApplicationController
 	end
 
 	def show
-		@entry = Entry.find(params[:user_reponse][:entry_id])
+		@entry = Entry.find(params[:user_response][:entry_id])
 		@user_response = UserResponse.find(params[:id])
 		@user = current_user
 	end
@@ -17,7 +17,7 @@ class UserResponsesController < ApplicationController
 	end
 
 	def update
-		@entry = Entry.find(params[:user_reponse][:entry_id])
+		@entry = Entry.find(params[:user_response][:entry_id])
 		@user_response = UserResponse.find(params[:id])
 
 		if @user_response.update(user_response_params)
@@ -29,7 +29,7 @@ class UserResponsesController < ApplicationController
 
 	private
 	  def user_response_params
-	    params.require(:user_reponse).permit(:reponse, :entry_id, :user_id, :response_time)
+	    params.require(:user_response).permit(:response, :entry_id, :user_id, :response_time)
 	  end
 
 end

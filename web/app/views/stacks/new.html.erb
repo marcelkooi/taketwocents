@@ -1,20 +1,25 @@
-New Stack
+<div class="container">
+	<div class="row">
 
-<br><br>
+		<h1>New Stack</h1>
 
-<%= form_for(@stack) do |f| %>
-	<p>
-		<%= f.label :title %>
-		<%= f.text_field :title %>
-	</p>
+		<br><br>
 
-	<p>
-		<%= f.label :code %>
-		<%= f.text_field :code %>
-	</p>
+		<%= form_for(@stack) do |f| %>
+			<p>
+				<%= f.label :title %>
+				<%= f.text_field :title %>
+			</p>
 
-	<p>
-		<%= f.submit class: "btn btn-success" %>
-	</p>
+			<p>
+				<%= f.label :code %>
+				<%= f.text_field :code %>
+			</p>
 
-<% end %>
+			<p>
+				<%= f.submit class: "btn btn-success" %>
+			</p>
+
+		<% end %>
+	</div>
+</div>

@@ -1,17 +1,19 @@
 <div class="container">
 	<div class="row">
-		<h3>User Login</h3> <br><br>
+		<div class="col-md-4 col-md-offset-4 col-xs-12 centered well form-group">
+			<h3>User Login</h3>
 
-		<%= form_tag '/login' do %>
+			<%= form_tag '/login' do %>
 
-			<%= label_tag :username %>:
-			<%= text_field_tag :username %> <br><br>
+				<%= label_tag :username %><br>
+				<span><%= text_field_tag :username %> </span><br><br>
 
-			<%= label_tag :password %>:
-			<%= password_field_tag :password %> <br><br>
+				<%= label_tag :password %><br>
+				<%= password_field_tag :password %> <br><br>
 
-			<%= submit_tag "Login", class: "btn btn-success" %> 
+				<%= submit_tag "Login", class: "btn btn-success" %> 
 
-		<% end %>
+			<% end %>
+		</div>
 	</div>
 </div>

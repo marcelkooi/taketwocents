@@ -1,5 +1,11 @@
 class EntriesController < ApplicationController
 	before_action :admin_user, only: [:create, :edit, :update]
+	before_action :current_user, only: [:show, :vote]
+
+	def new
+		@stack = Stack.find(params[:stack_id])
+		@entry = @stack.entries.new
+	end
 
 	def show
 		@stack = Stack.find(params[:stack_id])
@@ -16,7 +22,6 @@ class EntriesController < ApplicationController
 		else
 			redirect_to root_path
 		end
-
 	end
 
 	def edit
@@ -29,7 +34,7 @@ class EntriesController < ApplicationController
 		if @entry.update(entry_params)
 			redirect_to @entry
 		else
-			render 'edit'
+			redirect_to root_path
 		end
 	end
 
@@ -38,11 +43,12 @@ class EntriesController < ApplicationController
 		@entry = @stack.entries.find(params[:id])
 		time = Time.now - params[:entry_show_time].to_datetime
 		UserResponse.create(entry: @entry, user: current_user, response: params[:response], response_time: time )
+		
 		if Entry.exists? id: @entry.id + 1
 			redirect_to stack_entry_path(@stack, @entry.id + 1)
 		else
 			session[:user_id] = nil
-			redirect_to root_path
+			redirect_to thankyou_path
 		end
 	end
 

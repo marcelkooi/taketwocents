@@ -4,11 +4,12 @@
 
 			<h4><%= @entry.question %> </h4>
 
-			<%= image_tag(@entry.image, size: '150') %> 
+			<%= image_tag(@entry.image, size: '300') %> 
 
 			<p>
-				<%= link_to "Yes", vote_stack_entry_path(@stack, @entry, entry_show_time: @entry_show_time, response: true), method: :post %>
-				<%= link_to "No", vote_stack_entry_path(@stack, @entry, entry_show_time: @entry_show_time, response: false), method: :post %>
+			<br>
+				<%= link_to "No", vote_stack_entry_path(@stack, @entry, entry_show_time: @entry_show_time, response: false), method: :post, class: "btn btn-danger btn-lg" %>
+				<%= link_to "Yes", vote_stack_entry_path(@stack, @entry, entry_show_time: @entry_show_time, response: true), method: :post, class: "btn btn-success btn-lg" %>
 			</p>
 		</div>
 	</div>

@@ -1,5 +1,6 @@
 class StacksController < ApplicationController
-	before_action :admin_user, only [:new, :create, :edit, :update]
+	before_action :admin_user, only: [:new, :create, :edit, :update]
+	before_action :current_user, only: [:show]
 
 	def index
 		@stacks = Stack.all

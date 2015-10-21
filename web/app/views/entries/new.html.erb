@@ -18,10 +18,12 @@
 			  </div>
 			  
 			  <div class="field">
-			    <%= f.label :image %><br>
-			    <%= f.select(:image, Entry.uniq.pluck(:image), prompt: 'Choose existing') %> <br><br>
+			    <h3>Picture</h3><br>
+			    <%= f.label :picture_id %><br>
+    			<%= collection_select(:entry, :picture_id, Picture.all, :id, :link, {prompt: true}) %><br><br>
 			  </div>
 
+			  <%= render 'form' %>
 
 
 			  <br>

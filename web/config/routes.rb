@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   post '/login', to: 'logins#create'
   get '/logout', to: 'logins#destroy'
 
+  resources :pictures
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

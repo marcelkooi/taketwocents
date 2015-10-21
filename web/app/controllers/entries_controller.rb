@@ -1,6 +1,7 @@
 class EntriesController < ApplicationController
 	before_action :admin_user, only: [:create, :edit, :update]
 	before_action :current_user, only: [:show, :vote]
+	respond_to :js
 
 	def new
 		@stack = Stack.find(params[:stack_id])
@@ -21,8 +22,9 @@ class EntriesController < ApplicationController
 
 		if @entry.save
 			redirect_to @stack
+		elsif @picture.save
+			redirect_to :back
 		else
-			binding.pry
 			redirect_to root_path
 		end
 	end
@@ -62,7 +64,7 @@ class EntriesController < ApplicationController
 	  end
 
 	  def picture_params
-	  	params.require(:picture).permit(:link)
+	  	params.fetch(:picture, {}).permit(:link)
 	  end
 
 end

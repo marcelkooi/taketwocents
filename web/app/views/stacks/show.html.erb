@@ -15,7 +15,7 @@
 				<% @stack.entries.each do |entry| %>
 					<%= entry.title %> <br>
 					<%= entry.question %> <br>
-					<%= image_tag(entry.image) %> <br><br>
+					<%= image_tag(entry.picture.link) %> <br><br>
 				<% end %>
 		</p>
 

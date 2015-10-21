@@ -5,6 +5,7 @@ class EntriesController < ApplicationController
 	def new
 		@stack = Stack.find(params[:stack_id])
 		@entry = @stack.entries.new
+		@picture = Picture.new
 	end
 
 	def show
@@ -15,11 +16,13 @@ class EntriesController < ApplicationController
 
 	def create
 		@stack = Stack.find(params[:stack_id])
+		@picture = Picture.new(picture_params)
 		@entry = @stack.entries.create(entry_params)
 
 		if @entry.save
 			redirect_to @stack
 		else
+			binding.pry
 			redirect_to root_path
 		end
 	end
@@ -55,7 +58,11 @@ class EntriesController < ApplicationController
 
 	private
 	  def entry_params
-	    params.require(:entry).permit(:title, :question, :image)
+	    params.require(:entry).permit(:title, :question, :picture_id)
+	  end
+
+	  def picture_params
+	  	params.require(:picture).permit(:link)
 	  end
 
 end

@@ -15,7 +15,6 @@
 			    <%= f.label :question %><br>
 			    <%= f.select(:question, Entry.uniq.pluck(:question), prompt: 'Choose existing') %> <br><br>
 			    <%= f.text_field :question, placeholder: 'New Question' %><br><br>
-
 			  </div>
 			  
 			  <div class="field">
@@ -23,9 +22,7 @@
 			    <%= f.select(:image, Entry.uniq.pluck(:image), prompt: 'Choose existing') %> <br><br>
 			  </div>
 
-			  <div class="picture">
-        <%= f.file_field :image, accept: 'image/jpeg, image/gif, image/png, image/bmp' %><br>
-      	</div>
+
 
 			  <br>
 			  <div class="actions">

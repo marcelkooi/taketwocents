@@ -11,15 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151015211908) do
+ActiveRecord::Schema.define(version: 20151020210401) do
 
   create_table "entries", force: :cascade do |t|
     t.integer  "stack_id"
     t.string   "title"
     t.string   "question"
-    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "picture_id"
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string "link"
   end
 
   create_table "stacks", force: :cascade do |t|

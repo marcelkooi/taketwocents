@@ -1,5 +1,17 @@
 <div class="container">
 	<div class="row">
 		<h1>Admin Page</h1>
+
+<h3 style="color:red"> UNDER CONSTRUCTION </h3>
+		<% @entries.each do |entry| %>
+			<%= entry.title %> <br>
+			<% entry.user_responses.each do |user_response| %>
+				<%= user_response.response %>
+
+				<br>
+			<% end %>
+				<br><br>
+		<% end %>
+
 	</div>
 </div>

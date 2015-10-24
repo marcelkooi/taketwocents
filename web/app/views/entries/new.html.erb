@@ -13,12 +13,10 @@
 
 			  <div class="field">
 			    <%= f.label :question %><br>
-			    <%= f.select(:question, Entry.uniq.pluck(:question), prompt: 'Choose existing') %> <br><br>
 			    <%= f.text_field :question, placeholder: 'New Question' %><br><br>
 			  </div>
 			  
 			  <div class="field">
-			    <h3>Picture</h3><br>
 			    <%= f.label :picture_id %><br>
     			<%= collection_select(:entry, :picture_id, Picture.all, :id, :link, {prompt: true}) %><br><br>
 			  </div>

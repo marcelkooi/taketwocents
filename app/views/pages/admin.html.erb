@@ -2,15 +2,21 @@
 	<div class="row">
 		<h1>Admin Page</h1>
 
-<h3 class="redtext"> UNDER CONSTRUCTION </h3>
-		<% @entries.each do |entry| %>
-			<%= entry.title %> <br>
-			<%= entry.question %> <br>
-			<%= image_tag(entry.picture.link, height: 200) if entry.picture %> <br>
-				Yes: <%= entry.user_responses(response: true).size if entry.user_responses %> <br>
-				No: <%= entry.user_responses(response: true).size if entry.user_responses %> <br>
-				<br><br>
-		<% end %>
-
+		<p class="redtext"> UNDER CONSTRUCTION </p>
+		<div class="col-md-6 well">
+			<% @entries.each do |entry| %>
+				<h2><%= entry.title %></h2>
+				<%= image_tag(entry.picture.link, height: 200) if entry.picture %> <br>
+				<p><strong>
+				<%= entry.question %> <br>
+					Yes: <%= entry.user_responses.where(response: true).size if entry.user_responses %> &nbsp;&nbsp;|&nbsp;&nbsp;
+					No: <%= entry.user_responses.where(response: false).size if entry.user_responses %> 
+				</strong></p>
+			<% end %>
+		</div>
+		<div class="col-md-5 well pull-right">
+			<h3><%= link_to "Show All Pictures", pictures_path %></h3>
+			<br>
+		</div>
 	</div>
 </div>

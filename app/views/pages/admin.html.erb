@@ -5,11 +5,10 @@
 <h3 class="redtext"> UNDER CONSTRUCTION </h3>
 		<% @entries.each do |entry| %>
 			<%= entry.title %> <br>
-			<% entry.user_responses.each do |user_response| %>
-				<%= user_response.response %>
-
-				<br>
-			<% end %>
+			<%= entry.question %> <br>
+			<%= image_tag(entry.picture.link, height: 200) if entry.picture %> <br>
+				Yes: <%= entry.user_responses(response: true).size if entry.user_responses %> <br>
+				No: <%= entry.user_responses(response: true).size if entry.user_responses %> <br>
 				<br><br>
 		<% end %>
 

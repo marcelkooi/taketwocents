@@ -1,10 +1,19 @@
 <div class="container">
 	<div class="row">
-		<h1>New Entry</h1> <br>
+		<h1>New Entry</h1> 
+
+<h3><span class="redtext">NOTE: </span>If new picture, add picture to list first. Do not add title or question yet.</h3>
 
 		<%= form_for([@stack, @stack.entries.build], html: { multipart: true }) do |f| %>
 
 			<div class="well">
+
+			  <div class="field">
+			    <%= f.label :picture_id %><br>
+    			<%= collection_select(:entry, :picture_id, Picture.all, :id, :link, {prompt: true}) %><br><br>
+			  </div>
+
+			  <%= render 'form' %>
 
 			  <div class="field">
 			    <%= f.label :title %><br>
@@ -15,14 +24,6 @@
 			    <%= f.label :question %><br>
 			    <%= f.text_field :question, placeholder: 'New Question' %><br><br>
 			  </div>
-			  
-			  <div class="field">
-			    <%= f.label :picture_id %><br>
-    			<%= collection_select(:entry, :picture_id, Picture.all, :id, :link, {prompt: true}) %><br><br>
-			  </div>
-
-			  <%= render 'form' %>
-
 
 			  <br>
 			  <div class="actions">

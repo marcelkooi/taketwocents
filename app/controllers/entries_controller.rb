@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-	before_action :admin_user, only: [:create, :edit, :update]
+	before_action :admin_user, only: [:create, :edit, :update, :new]
 	before_action :current_user, only: [:show, :vote]
 	respond_to :js
 

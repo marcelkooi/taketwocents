@@ -7,40 +7,12 @@
 		</p>
 
 		<p>
-			Code: <%= @stack.code %>
-		</p>
-
-		<p>
 			Entries: 
 				<% @stack.entries.each do |entry| %>
 					<%= entry.title %> <br>
 					<%= entry.question %> <br>
-					<%= image_tag(entry.picture.link) %> <br><br>
+					<%= image_tag(entry.picture.link) if entry.picture? %> <br><br>
 				<% end %>
 		</p>
-
-		<br><br>
-
-			<%= form_for([@stack, @stack.entries.build]) do |f| %>
-
-				<p>
-					<%= f.label :title %>
-					<%= f.text_field :title %>
-				</p>
-
-				<p>
-					<%= f.label :question %>
-					<%= f.text_field :question %>
-				</p>
-
-				<p>
-			    <%= f.file_field :image, accept: 'image/jpeg, image/gif, image/png' %>
-			  </p>
-
-			  <p>
-			  <%= f.submit class: "btn btn-success" %>
-			  </p>
-
-			<% end %>
 	</div>
 </div>

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
 		if @user.save
 			session[:user_id] = @user.id
-			redirect_to stack_entry_path(1, 1)
+			redirect_to stack_entry_path(Stack.first.id, Stack.first.entries.first.id)
 		else
 			redirect_to root_path
 		end

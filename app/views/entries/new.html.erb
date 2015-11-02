@@ -8,12 +8,12 @@
 
 			<div class="well">
 
+			  <%= render 'form' %>
+
 			  <div class="field">
 			    <%= f.label :picture_id %><br>
     			<%= collection_select(:entry, :picture_id, Picture.all, :id, :link, {prompt: true}) %><br><br>
 			  </div>
-
-			  <%= render 'form' %>
 
 			  <div class="field">
 			    <%= f.label :title %><br>

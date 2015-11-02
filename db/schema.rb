@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020210401) do
+ActiveRecord::Schema.define(version: 20151102223755) do
 
   create_table "entries", force: :cascade do |t|
     t.integer  "stack_id"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20151020210401) do
     t.boolean "admin"
     t.string  "gender"
     t.integer "age"
-    t.string  "ethnicity"
+    t.string  "group"
   end
 
 end

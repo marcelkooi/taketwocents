@@ -4,14 +4,16 @@
 			<h3>New User</h3>
 			<%= form_for(@user) do |f| %>
 				<div>
+					<%= f.label :group %> <br>
+					<%= f.select(:group, [['1', 1], ['2', 2], ['3', 3], ['4', 4]], prompt: 'Please select') %> <br><br>
+				</div>
+				<div>
 					<%= f.label :age %> <br>
 					<%= f.number_field :age, class: 'col-md-6 col-md-offset-3' %> <br><br>
 				</div>
+				<div>
 					<%= f.label :gender %> <br>
 					<%= f.select(:gender, [['Male', 1], ['Female', 2], ['Other', 3]], prompt: 'Please select') %> <br><br>
-				<div>
-					<%= f.label :ethnicity %> <br>
-					<%= f.select(:ethnicity, [['Caucasian', 1], ['African American', 2], ['Etc', 3]], prompt: 'Please select') %> <br><br>
 				</div>
 				<div>
 					<%= f.submit class: "btn btn-success btn-lg" %> 

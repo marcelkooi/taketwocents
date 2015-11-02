@@ -11,13 +11,13 @@
 			  <%= render 'form' %>
 
 			  <div class="field">
-			    <%= f.label :picture_id %><br>
-    			<%= collection_select(:entry, :picture_id, Picture.all, :id, :link, {prompt: true}) %><br><br>
+			    <%= f.label :title %><br>
+			    <%= f.text_field :title, placeholder: 'New Title' %><br><br>
 			  </div>
 
 			  <div class="field">
-			    <%= f.label :title %><br>
-			    <%= f.text_field :title, placeholder: 'New Title' %><br><br>
+			    <%= f.label :picture_id %><br>
+    			<%= collection_select(:entry, :picture_id, Picture.all, :id, :link, {prompt: true}) %><br><br>
 			  </div>
 
 			  <div class="field">

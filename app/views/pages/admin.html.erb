@@ -3,6 +3,13 @@
 		<h1>Admin Page</h1>
 
 		<p class="redtext"> UNDER CONSTRUCTION </p>
+		<div class="col-md-12">
+		<% @stacks.each do |stack| %>
+			<%= link_to "Stack " + stack.id.to_s, stack_path(stack.id) %><br>
+		<% end %>
+		<br>
+		</div>
+
 		<div class="col-md-6 well">
 			<% @entries.each do |entry| %>
 				<h2><%= entry.title %></h2>

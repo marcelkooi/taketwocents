@@ -1,18 +1,12 @@
 <div class="container">
 	<div class="row">
-		<h1>Show Stack</h1>
-		<br><br>
+		<h1><%= @stack.title %></h1>
 		<p>
-			Title: <%= @stack.title %>
-		</p>
-
-		<p>
-			Entries: 
-				<% @stack.entries.each do |entry| %>
-					<%= entry.title %> <br>
-					<%= entry.question %> <br>
-					<%= image_tag(entry.picture.link) if entry.picture %> <br><br>
-				<% end %>
+			<% @stack.entries.each do |entry| %>
+				<%= entry.title %> <br>
+				<%= entry.question %> <br>
+				<%= image_tag(entry.picture.link, height: 200) if entry.picture %> <br><br>
+			<% end %>
 		</p>
 	</div>
 </div>

@@ -9,7 +9,7 @@
 				</div>
 				<div>
 					<%= label_tag(:stack) %><br>
-					<%= select_tag('Stack', options_from_collection_for_select(@stacks, 'id', 'title'), prompt: 'Please select') %> <br><br>
+					<%= select_tag('stack_id', options_from_collection_for_select(@stacks, 'id', 'title'), prompt: 'Please select') %> <br><br>
 				</div>
 				<div>
 					<%= f.label :age %> <br>

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
 	def new
 		@user = User.new
+		@stacks = Stack.all
 	end
 
 	def create
@@ -43,7 +44,7 @@ class UsersController < ApplicationController
 
 	private
 		def user_params
-			params.require(:user).permit(:username, :password, :ethnicity, :age, :gender)
+			params.require(:user).permit(:ethnicity, :age, :gender, :stack)
 		end
 
 end

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :stacks
   resources :pictures
 
+  get '/cards', to: "cards#index", as: "cards"
+  post '/cards', to: "cards#create"
   get '/stacks/:stack_id/:sequence(.:format)', to: "cards#show", as: "show_card"
   post '/stacks/:stack_id/:sequence/vote(.:format)', to: "cards#vote", as: "vote_card"
   post '/stacks/:stack_id/cards(.:format)', to: "cards#create", as: "new_card"

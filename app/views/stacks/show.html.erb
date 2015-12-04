@@ -1,17 +1,47 @@
 <div class="container">
+	<div>
+		<div class="row">
+			<%= form_for @new_card do |f| %>
+
+				<%= f.hidden_field :stack_id, :value => @stack.id %> <br>
+
+				<% @entries.each do |entry| %>
+					<div class="centered col-md-4">
+						<%= f.radio_button(:entry_id, entry.id) %> <br>
+						<%= f.label entry.title %><br>
+						<%= entry.question %> <br>
+						<%= image_tag(entry.picture.link, height: 200) if entry.picture %>
+					</div>
+				<% end %>
+		</div>
+				<div class="row centered">
+
+					<%= will_paginate @entries %> <br>
+
+					<%= f.label :sequence %> <br>
+					<%= f.text_field :sequence, value: @nextseq %> <br><br>
+
+					<%= f.submit %>
+
+				</div>
+
+			<% end %>
+
+		</div>
+
 	<div class="row">
 		<h1><%= @stack.title %></h1>
 		<p>
 			<% @cards.each do |card| %>
+			<div class="col-md-4">
 				Position: <%= card.sequence %> <br>
 				<%= card.entry.title %> <br>
 				<%= card.entry.question %> <br>
 				<%= image_tag(card.entry.picture.link, height: 200) if card.entry.picture %> <br><br>
+			</div>
 			<% end %>
 		</p>
-	</div>
-
-	<div>
 
 	</div>
+
 </div>

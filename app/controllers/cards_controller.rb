@@ -1,5 +1,9 @@
 class CardsController < ApplicationController
 
+	def index
+		@cards = Card.all 
+	end
+
 	def show
 		@stackid = params[:stack_id]
 		@seq = params[:sequence]
@@ -10,11 +14,11 @@ class CardsController < ApplicationController
 	end
 
 	def create
+		binding.pry
 		@card = Card.new(card_params)
-		@stackid = @card.stack_id
 
 		if @card.save
-			redirect_to stack_path(@stackid)
+			redirect_to stack_path(params[:card][:stack_id])
 		else
 			redirect_to :back
 		end

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 
 		if @user.save
-			testing_stack = Stack.find_by(params[:stack_id])
+			testing_stack = Stack.find(params[:stack_id])
 			session[:user_id] = @user.id
 			redirect_to show_card_path(testing_stack.id, 1)
 		else

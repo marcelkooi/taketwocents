@@ -4,7 +4,7 @@
 
 <h3><span class="redtext">NOTE: </span>If new picture, add picture to list first. Do not add title or question yet.</h3>
 
-		<%= form_for([@stack, @stack.entries.build], html: { multipart: true }) do |f| %>
+		<%= form_for(@entry, html: { multipart: true }) do |f| %>
 
 			<div class="well">
 

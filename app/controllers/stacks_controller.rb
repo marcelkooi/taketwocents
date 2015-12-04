@@ -1,6 +1,7 @@
 class StacksController < ApplicationController
 	before_action :admin_user, only: [:new, :create, :edit, :update]
 	before_action :current_user, only: [:show]
+	before_action :set_stack, only: [:show, :edit, :update]
 
 	def index
 		@stacks = Stack.all
@@ -11,8 +12,8 @@ class StacksController < ApplicationController
 	end
 
 	def show
-		@stack = Stack.find(params[:id])
-		@entry = Entry.new
+		@cards = @stack.cards
+		@new_card = Card.new
 	end
 
 	def create
@@ -26,11 +27,10 @@ class StacksController < ApplicationController
 	end
 
 	def edit 
-		@stack = Stack.find(params[:id])
+
 	end
 
 	def update
-		@stack = Stack.find(params[:id])
 
 		if @stack.update(stack_params)
 			redirect_to stack_path
@@ -42,6 +42,10 @@ class StacksController < ApplicationController
 	private
 		def stack_params
 			params.require(:stack).permit(:title, :code)
+		end
+
+		def set_stack
+			@stack = Stack.find(params[:id])
 		end
 
 end

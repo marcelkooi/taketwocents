@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102223755) do
+ActiveRecord::Schema.define(version: 20151202033154) do
+
+  create_table "cards", force: :cascade do |t|
+    t.integer  "sequence"
+    t.integer  "stack_id"
+    t.integer  "entry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "entries", force: :cascade do |t|
-    t.integer  "stack_id"
     t.string   "title"
     t.string   "question"
     t.datetime "created_at"

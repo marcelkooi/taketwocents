@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
   
   resources :users
-  resources :stacks do
-    resources :entries do
-      member do
-        post 'vote'
-      end
-    end
-  end
+  resources :entries
+  resources :stacks
+  resources :pictures
+
+  get '/stacks/:stack_id/:sequence(.:format)', to: "cards#show", as: "show_card"
+  post '/stacks/:stack_id/:sequence/vote(.:format)', to: "cards#vote", as: "vote_card"
+  post '/stacks/:stack_id/cards(.:format)', to: "cards#create", as: "new_card"
+
+  
+
 
   root 'pages#home'
   get '/about', to: 'pages#about'
@@ -18,7 +21,7 @@ Rails.application.routes.draw do
   post '/login', to: 'logins#create'
   get '/logout', to: 'logins#destroy'
 
-  resources :pictures
+  
 
 
 

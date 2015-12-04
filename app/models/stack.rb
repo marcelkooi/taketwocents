@@ -1,7 +1,7 @@
 class Stack < ActiveRecord::Base
 	
-	has_many :user_responses, through: :entries
-	has_many :entries
+	has_many :cards
+	has_many :entries, through: :cards
 
 
 end

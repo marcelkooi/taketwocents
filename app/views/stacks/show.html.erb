@@ -2,11 +2,16 @@
 	<div class="row">
 		<h1><%= @stack.title %></h1>
 		<p>
-			<% @stack.entries.each do |entry| %>
-				<%= entry.title %> <br>
-				<%= entry.question %> <br>
-				<%= image_tag(entry.picture.link, height: 200) if entry.picture %> <br><br>
+			<% @cards.each do |card| %>
+				Position: <%= card.sequence %> <br>
+				<%= card.entry.title %> <br>
+				<%= card.entry.question %> <br>
+				<%= image_tag(card.entry.picture.link, height: 200) if card.entry.picture %> <br><br>
 			<% end %>
 		</p>
+	</div>
+
+	<div>
+
 	</div>
 </div>

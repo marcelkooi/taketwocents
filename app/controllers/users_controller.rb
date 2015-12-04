@@ -13,10 +13,9 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 
 		if @user.save
-			binding.pry
 			testing_stack = Stack.find_by(params[:stack_id])
 			session[:user_id] = @user.id
-			redirect_to stack_entry_path(testing_stack.id, testing_stack.entries.first.id)
+			redirect_to show_card_path(testing_stack.id, 1)
 		else
 			redirect_to root_path
 		end

@@ -5,6 +5,7 @@ class Entry < ActiveRecord::Base
 	has_many :user_responses, dependent: :destroy
 	belongs_to :picture
 
+	validates :title, presence: true
 	validates :question, presence: true
 
 end

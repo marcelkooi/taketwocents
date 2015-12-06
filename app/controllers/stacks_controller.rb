@@ -14,8 +14,10 @@ class StacksController < ApplicationController
 	def show
 		@cards = @stack.cards
 		@cards = @cards.sort{ |a,b| a.sequence - b.sequence }
-		@lastcard = @cards.last
-		@nextseq = @lastcard.sequence + 1
+		if @cards.last
+			@lastcard = @cards.last
+			@nextseq = @lastcard.sequence + 1
+		end
 		@entries = Entry.paginate(:page => params[:page], per_page: 3)
 		@new_card = Card.new
 	end

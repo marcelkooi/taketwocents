@@ -8,9 +8,14 @@ class CardsController < ApplicationController
 		@stackid = params[:stack_id]
 		@seq = params[:sequence]
 		@card = Card.where("stack_id = ? AND sequence = ?", @stackid, @seq).first
-		@entryid = @card.entry_id
-		@entry = Entry.find(@entryid)
-		@card_show_time = Time.now
+		if @card == nil
+			redirect_to thankyou_path
+		else
+			@entryid = @card.entry_id
+			@entry = Entry.find(@entryid)
+			@card_show_time = Time.now
+		end
+
 	end
 
 	def create

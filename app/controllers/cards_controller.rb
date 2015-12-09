@@ -19,7 +19,6 @@ class CardsController < ApplicationController
 	end
 
 	def create
-		binding.pry
 		@card = Card.new(card_params)
 
 		if @card.save

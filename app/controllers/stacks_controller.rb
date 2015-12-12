@@ -17,6 +17,8 @@ class StacksController < ApplicationController
 		if @cards.last
 			@lastcard = @cards.last
 			@nextseq = @lastcard.sequence + 1
+		else
+			@nextseq = 1
 		end
 		@entries = Entry.paginate(:page => params[:page], per_page: 3)
 		@new_card = Card.new

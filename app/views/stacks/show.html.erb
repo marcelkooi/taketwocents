@@ -15,7 +15,7 @@
 
 					<%= will_paginate @entries %> <br>
 
-					<%= f.label :sequence %> <br>
+					<strong>Stack Position</strong> <br>
 					<%= f.text_field :sequence, value: @nextseq %> <br><br>
 
 					<%= f.hidden_field :stack_id, value: @stack.id %> <br>	
@@ -32,9 +32,9 @@
 		<h1><%= @stack.title %></h1>
 		<p>
 			<% @cards.each do |card| %>
-			<div class="col-md-4">
-				Position: <%= card.sequence %> <br>
-				<%= card.entry.title %> <br>
+			<div class="col-md-4 centered">
+				<strong>| <%= card.sequence %> | 
+				<%= card.entry.title %></strong> <br>
 				<%= card.entry.question %> <br>
 				<%= image_tag(card.entry.picture.link, height: 200) if card.entry.picture %> <br><br>
 			</div>

@@ -9,6 +9,7 @@ class CardsController < ApplicationController
 		@seq = params[:sequence]
 		@card = Card.where("stack_id = ? AND sequence = ?", @stackid, @seq).first
 		if @card == nil
+			session[:user_id] = nil
 			redirect_to thankyou_path
 		else
 			@entryid = @card.entry_id

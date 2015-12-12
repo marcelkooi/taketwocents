@@ -36,7 +36,7 @@ class CardsController < ApplicationController
 		@entryid = @card.entry_id
 		@entry = Entry.find(@entryid)
 		time = Time.now - params[:card_show_time].to_datetime
-		UserResponse.create(entry: @entry, user: current_user, response: params[:response], response_time: time )
+		UserResponse.create(entry: @entry, user: current_user, card_id: @card.id, response: params[:response], response_time: time )
 		
 
 		if Card.where("stack_id = ? AND sequence = ?", @stackid, @nextseq).exists?
@@ -51,7 +51,5 @@ class CardsController < ApplicationController
 		def card_params
 			params.require(:card).permit(:stack_id, :entry_id, :sequence)
 		end
-
-
 
 end

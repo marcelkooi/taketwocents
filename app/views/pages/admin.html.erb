@@ -18,7 +18,7 @@
 			<h3><%= link_to "Show All Pictures", pictures_path %></h3>
 			<br>
 				<% @stacks.each do |stack| %>
-					<%= link_to stack.title, stack_path(stack.id) %>
+					<%= link_to stack.title, stack_path(stack.id) %> <br>
 				<% end %>
 		<br><br>
 		<%= link_to "New Stack", new_stack_path, class: "btn btn-success" %><br>

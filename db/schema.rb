@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202033154) do
+ActiveRecord::Schema.define(version: 20151210011627) do
 
   create_table "cards", force: :cascade do |t|
     t.integer  "sequence"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20151202033154) do
     t.integer  "response_time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "card_id"
   end
 
   create_table "users", force: :cascade do |t|

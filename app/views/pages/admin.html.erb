@@ -15,13 +15,16 @@
 		</div>
 
 		<div class="col-md-5 well pull-right">
-			<h3><%= link_to "Show All Pictures", pictures_path %></h3>
-			<br>
+		<%= link_to "Export Results to CSV", admin_path(format: :csv), class: "btn btn-success" %> <br><br>
+			<strong><%= link_to "Show All Pictures", pictures_path %></strong>
+			<br><br>
+			<strong>Stacks</strong><br>
 				<% @stacks.each do |stack| %>
 					<%= link_to stack.title, stack_path(stack.id) %> <br>
 				<% end %>
-		<br><br>
-		<%= link_to "New Stack", new_stack_path, class: "btn btn-success" %><br>
+		<br>
+		<%= link_to "Create New Stack", new_stack_path, class: "btn btn-primary" %><br>
+		
 		</div>
 	</div>
 </div>

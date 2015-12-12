@@ -14,12 +14,13 @@ class UserResponse < ActiveRecord::Base
 
 	def self.to_csv
 		attributes = %w[ 	id 
-											card.stack.id 
-											entry.id 
-											entry.picture.id 
-											user.id 
-											user.age 
-											user.gender 
+											stack_title 
+											entry_title
+											entry_question
+											picture_id 
+											user_id 
+											user_age 
+											user_gender 
 											response 
 											response_time ]
 
@@ -28,8 +29,9 @@ class UserResponse < ActiveRecord::Base
 
 			all.each do |user_response|
 				csv << [	user_response.id,
-									user_response.card.stack.id,
-									user_response.entry.id,
+									user_response.card.stack.title,
+									user_response.entry.title,
+									user_response.entry.question,
 									user_response.entry.picture.id,
 									user_response.user.id,
 									user_response.user.age, 

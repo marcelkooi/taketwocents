@@ -15,7 +15,6 @@ class UsersController < ApplicationController
 
 		if params[:stack_id].present?
 			if @user.save
-				flash[:success] = "Welcome!"
 				testing_stack = Stack.find(params[:stack_id])
 				session[:user_id] = @user.id
 				redirect_to show_card_path(testing_stack.id, 1)

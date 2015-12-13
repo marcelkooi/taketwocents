@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20151213165619) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "card_id"
-    t.float    "response_time"
+    t.decimal  "response_time", precision: 5, scale: 2
   end
 
   create_table "users", force: :cascade do |t|

@@ -11,13 +11,21 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
+		@stacks = Stack.all
 
-		if @user.save
-			testing_stack = Stack.find(params[:stack_id])
-			session[:user_id] = @user.id
-			redirect_to show_card_path(testing_stack.id, 1)
+		if params[:stack_id].present?
+			if @user.save
+				flash[:success] = "Welcome!"
+				testing_stack = Stack.find(params[:stack_id])
+				session[:user_id] = @user.id
+				redirect_to show_card_path(testing_stack.id, 1)
+			else
+				flash.now[:danger] = "User not saved successfully."
+				render :new
+			end
 		else
-			redirect_to root_path
+			flash.now[:danger] = "User not saved successfully."
+			render :new
 		end
 	end
 
@@ -33,13 +41,15 @@ class UsersController < ApplicationController
 		if current_user
 			@user = current_user
 		else
-			redirect_to root_path
+			render :new
 		end
 
-		if @user.update(user_params)
-			redirect_to @user
+		if @user.update_attributes(user_params) && params[:stack_id].present?
+			testing_stack = Stack.find(params[:stack_id])
+			session[:user_id] = @user.id
+			redirect_to show_card_path(testing_stack.id, 1)
 		else
-			redirect_to root_path
+			render :edit
 		end
 	end
 

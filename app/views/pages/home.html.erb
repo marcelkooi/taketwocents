@@ -1,8 +1,12 @@
 <div class="container">
 	<div class="row">
 		<h1>Welcome!</h1>
+		<% if current_user && current_user.admin? %>
+			<h3>Please click <%= link_to 'here', admin_path %> to view the dashboard.</h3>
+		<% else %>
 		<p><h3>Please click below to begin. </h3><br>
 		<%= link_to 'New User', new_user_path, class: "btn btn-success btn-lg" %>
 		</p>
+		<% end %>
 	</div>
 </div>

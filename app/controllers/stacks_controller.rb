@@ -20,7 +20,7 @@ class StacksController < ApplicationController
 		else
 			@nextseq = 1
 		end
-		@entries = Entry.paginate(:page => params[:page], per_page: 3)
+		@entries = Entry.paginate(:page => params[:page], per_page: 6)
 		@new_card = Card.new
 	end
 
@@ -30,7 +30,8 @@ class StacksController < ApplicationController
 		if @stack.save
 			redirect_to @stack
 		else
-			redirect_to root_path
+			render :new
+			flash.now[:danger] = "Stack not saved successfully."
 		end
 	end
 
@@ -43,7 +44,7 @@ class StacksController < ApplicationController
 		if @stack.update(stack_params)
 			redirect_to stack_path
 		else
-			redirect_to root_path
+			render :edit
 		end
 	end
 

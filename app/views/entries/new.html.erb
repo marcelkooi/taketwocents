@@ -1,7 +1,8 @@
 <div class="container">
 	<div class="row">
+	<%= render 'shared/errors', obj: @entry %>	
 		<h1>New Entry</h1> 
-
+		
 <h3><span class="redtext">NOTE: </span>If new picture, add picture to list first. Do not add title or question yet.</h3>
 
 		<%= form_for(@entry, html: { multipart: true }) do |f| %>

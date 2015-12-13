@@ -1,39 +1,36 @@
 <div class="container">
-	<div data-no-turbolink>
-		<%= form_for @new_card do |f| %>
-		<div class="row">
-				<% @entries.each do |entry| %>
-					<div class="centered col-md-4">
-						<%= f.radio_button(:entry_id, entry.id) %> <br>
-						<%= f.label entry.title %><br>
-						<%= entry.question %> <br>
-						<%= image_tag(entry.picture.link, height: 200) if entry.picture %>
+<%= render 'shared/errors', obj: @new_card %>
+<h1 class="centered"><%= @stack.title %> </h1><hr>
+	
+		<div id="add_card">
+			<div class="well" data-no-turbolink>
+				<%= form_for @new_card do |f| %>
+					<div class="row">
+						<% @entries.each do |entry| %>
+							<div class="centered col-md-2">
+								<%= f.radio_button(:entry_id, entry.id) %> <br>
+								<%= f.label entry.title %><br>
+								<%= entry.question %> <br>
+								<%= image_tag(entry.picture.link, width: 150) if entry.picture %>
+							</div>
+						<% end %>
+					</div>
+					<div class="row centered">
+						<%= will_paginate @entries %> <br>
+						<strong>Stack Position</strong> <br>
+						<%= f.text_field :sequence, value: @nextseq %> <br><br>
+						<%= f.hidden_field :stack_id, value: @stack.id %> 
+						<%= f.submit class: "btn btn-success" %>
 					</div>
 				<% end %>
 		</div>
-				<div class="row centered">
-
-					<%= will_paginate @entries %> <br>
-
-					<strong>Stack Position</strong> <br>
-					<%= f.text_field :sequence, value: @nextseq %> <br><br>
-
-					<%= f.hidden_field :stack_id, value: @stack.id %> <br>	
-
-					<%= f.submit %>
-
-				</div>
-
-			<% end %>
-
 	</div>
 
 	<div class="row">
-		<h1><%= @stack.title %></h1>
 		<p>
 			<% @cards.each do |card| %>
 			<div class="col-md-4 centered">
-				<strong>| <%= card.sequence %> | 
+				<strong><%= card.sequence %>.
 				<%= card.entry.title %></strong> <br>
 				<%= card.entry.question %> <br>
 				<%= image_tag(card.entry.picture.link, height: 200) if card.entry.picture %> <br><br>
@@ -42,5 +39,6 @@
 		</p>
 
 	</div>
-
 </div>
+
+<%= javascript_include_tag "stack" %>

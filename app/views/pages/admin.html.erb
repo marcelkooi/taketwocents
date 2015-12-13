@@ -2,29 +2,33 @@
 	<div class="row">
 		<h1>Admin Page</h1>
 
-		<div class="col-md-6 well">
-			<% @entries.each do |entry| %>
-				<h2><%= entry.title %></h2>
-				<%= image_tag(entry.picture.link, height: 200) if entry.picture %> <br>
-				<p><strong>
-				<%= entry.question %> <br>
-					Yes: <%= entry.user_responses.where(response: true).size if entry.user_responses %> &nbsp;&nbsp;|&nbsp;&nbsp;
-					No: <%= entry.user_responses.where(response: false).size if entry.user_responses %> 
-				</strong></p>
-			<% end %>
-		</div>
-
-		<div class="col-md-5 well pull-right">
-		<%= link_to "Export Results to CSV", admin_path(format: :csv), class: "btn btn-success" %> <br><br>
-			<strong><%= link_to "Show All Pictures", pictures_path %></strong>
-			<br><br>
+		<div class="col-md-3 well">
 			<strong>Stacks</strong><br>
 				<% @stacks.each do |stack| %>
 					<%= link_to stack.title, stack_path(stack.id) %> <br>
 				<% end %>
-		<br>
-		<%= link_to "Create New Stack", new_stack_path, class: "btn btn-primary" %><br>
-		
+				
+				<strong><%= link_to "+Add New Stack", new_stack_path %></strong><br><br>
+				
+				<strong><%= link_to "Show All Pictures", pictures_path %></strong><br><br>
+
+				<%= link_to "Export Results to CSV", admin_path(format: :csv), class: "btn btn-success" %> 
+		</div>
+
+		<div class="col-md-9 pull-right">
+			<% @entries.each do |entry| %>
+				<div class="col-md-5 well centered">
+					<h2><%= entry.title %></h2>
+					<%= image_tag(entry.picture.link, height: 200) if entry.picture %> <br>
+					<p><strong>
+					<%= entry.question %> <br>
+						Yes: <%= entry.user_responses.where(response: true).size if entry.user_responses %> &nbsp;&nbsp;|&nbsp;&nbsp;
+						No: <%= entry.user_responses.where(response: false).size if entry.user_responses %> 
+					</strong></p>
+				</div>
+				<div class="col-md-1">
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>

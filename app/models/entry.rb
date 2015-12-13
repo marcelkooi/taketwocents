@@ -7,5 +7,6 @@ class Entry < ActiveRecord::Base
 
 	validates :title, presence: true
 	validates :question, presence: true
+	validates :picture_id, presence: true
 
 end

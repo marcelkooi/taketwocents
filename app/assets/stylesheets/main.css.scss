@@ -292,18 +292,48 @@ h4{
     padding-top: 12px;
 }
 
-.pagepadding {
-    padding-top: 110px;
-}
+
 
 .redtext {
     color: red;
 }
 
-#swipeable_card {
-    width: 450px;
-    max-width: 100%;
-    height: auto;
+@media (max-height: 630px) {
+
+    #icon_logo {
+        height: 30px;
+    }
+
+    #swipeable_card {
+        max-width: 100%;
+        overflow: hidden;
+        height: 280px;
+    }    
+
+    .pagepadding {
+    padding-top: 60px;
+    }
+
 }
+
+@media (min-height: 630px) {
+
+    #icon_logo {
+        height: 75px;
+    }
+
+    #swipeable_card {
+        max-width: 100%;
+        overflow: hidden;
+        height: 50%;
+    }
+
+    .pagepadding {
+    padding-top: 110px;
+    }
+
+}
+
+
 
 

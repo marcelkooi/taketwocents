@@ -8,8 +8,8 @@
 
 			<p>
 			<br>
-				<%= link_to "No", vote_card_path(@stackid, @seq, card_show_time: @card_show_time, response: false), method: :post, class: "btn btn-danger btn-lg", id: "voteno" %>
-				<%= link_to "Yes", vote_card_path(@stackid, @seq, card_show_time: @card_show_time, response: true), method: :post, class: "btn btn-success btn-lg", id: "voteyes" %>
+				<%= link_to "<< NO", vote_card_path(@stackid, @seq, card_show_time: @card_show_time, response: false), method: :post, class: "btn btn-danger btn-lg", id: "voteno" %>
+				<%= link_to "YES >>", vote_card_path(@stackid, @seq, card_show_time: @card_show_time, response: true), method: :post, class: "btn btn-success btn-lg", id: "voteyes" %> 
 			</p>
 		</div>
 	</div>

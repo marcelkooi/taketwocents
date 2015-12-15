@@ -15,7 +15,7 @@
 				<%= link_to "Export Results to CSV", admin_path(format: :csv), class: "btn btn-success" %> 
 		</div>
 
-		<div class="col-md-9 pull-right">
+		<div class="col-md-9">
 			<% @entries.each do |entry| %>
 				<div class="col-md-5 well centered">
 					<h2><%= entry.title %></h2>

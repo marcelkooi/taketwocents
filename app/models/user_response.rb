@@ -15,6 +15,7 @@ class UserResponse < ActiveRecord::Base
 	def self.to_csv
 		attributes = %w[ 	id 
 											stack_title 
+											date
 											group
 											entry_title
 											entry_question
@@ -31,6 +32,7 @@ class UserResponse < ActiveRecord::Base
 			all.each do |user_response|
 				csv << [	user_response.id,
 									user_response.card.stack.title,
+									user_response.created_at,
 									user_response.user.group,
 									user_response.entry.title,
 									user_response.entry.question,

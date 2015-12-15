@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213165619) do
+ActiveRecord::Schema.define(version: 20151215232202) do
 
   create_table "cards", force: :cascade do |t|
     t.integer  "sequence"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20151213165619) do
   create_table "entries", force: :cascade do |t|
     t.string   "title"
     t.string   "question"
-    t.datetime "created_at"
+    t.datetime "created_at", null: false
     t.datetime "updated_at"
     t.integer  "picture_id"
   end
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20151213165619) do
   create_table "stacks", force: :cascade do |t|
     t.string   "title"
     t.string   "code"
-    t.datetime "created_at"
+    t.datetime "created_at", null: false
     t.datetime "updated_at"
   end
 
@@ -44,19 +44,20 @@ ActiveRecord::Schema.define(version: 20151213165619) do
     t.integer  "entry_id"
     t.integer  "user_id"
     t.boolean  "response"
-    t.datetime "created_at"
+    t.datetime "created_at",                            null: false
     t.datetime "updated_at"
     t.integer  "card_id"
     t.decimal  "response_time", precision: 5, scale: 2
   end
 
   create_table "users", force: :cascade do |t|
-    t.string  "username"
-    t.string  "password"
-    t.boolean "admin"
-    t.string  "gender"
-    t.integer "age"
-    t.string  "group"
+    t.string   "username"
+    t.string   "password"
+    t.boolean  "admin"
+    t.string   "gender"
+    t.integer  "age"
+    t.string   "group"
+    t.datetime "created_at", null: false
   end
 
 end

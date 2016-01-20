@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215232202) do
+ActiveRecord::Schema.define(version: 20160120032335) do
 
   create_table "cards", force: :cascade do |t|
     t.integer  "sequence"
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 20151215232202) do
     t.datetime "created_at", null: false
     t.datetime "updated_at"
     t.integer  "picture_id"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.integer  "prompt_help"
+    t.integer  "would_use"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -57,7 +65,7 @@ ActiveRecord::Schema.define(version: 20151215232202) do
     t.string   "gender"
     t.integer  "age"
     t.string   "group"
-    t.datetime "created_at", null: false
+    t.datetime "created_at", default: '2015-12-15 18:25:48', null: false
   end
 
 end

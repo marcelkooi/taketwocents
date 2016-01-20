@@ -23,7 +23,7 @@ helper_method :current_user, :logged_in?, :admin_user
   end
   
   def logged_in?
-    !!current_user 
+    redirect_to root_path if !current_user 
 	end
 
 	def admin_user

@@ -1,4 +1,5 @@
 class CardsController < ApplicationController
+	before_action :current_user, only: [:show, :vote]
 
 	def index
 		@cards = Card.all 
@@ -43,8 +44,7 @@ class CardsController < ApplicationController
 		if Card.where("stack_id = ? AND sequence = ?", @stackid, @nextseq).exists?
 			redirect_to show_card_path(@stackid, @nextseq)
 		else
-			session[:user_id] = nil
-			redirect_to thankyou_path
+			redirect_to new_feedback_path
 		end
 	end
 

@@ -24,7 +24,9 @@ class UserResponse < ActiveRecord::Base
 											user_age 
 											user_gender 
 											response 
-											response_time ]
+											response_time
+											prompt_help
+											use_price ]
 
 		CSV.generate(headers: true) do |csv|
 			csv << attributes
@@ -41,7 +43,9 @@ class UserResponse < ActiveRecord::Base
 									user_response.user.age, 
 									user_response.user.gender,
 									user_response.response,
-									user_response.response_time	]
+									user_response.response_time,
+									user_response.user.feedback.prompt_help,
+									user_response.user.feedback.would_use	]
 			end
 		end
 	end

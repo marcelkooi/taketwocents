@@ -4,14 +4,13 @@ Rails.application.routes.draw do
   resources :entries
   resources :stacks
   resources :pictures
+  resources :feedbacks, only: [:new, :create]
 
   get '/cards', to: "cards#index", as: "cards"
   post '/cards', to: "cards#create"
   get '/stacks/:stack_id/:sequence(.:format)', to: "cards#show", as: "show_card"
   post '/stacks/:stack_id/:sequence/vote(.:format)', to: "cards#vote", as: "vote_card"
   post '/stacks/:stack_id/cards(.:format)', to: "cards#create", as: "new_card"
-
-  
 
 
   root 'pages#home'
@@ -24,9 +23,6 @@ Rails.application.routes.draw do
   get '/logout', to: 'logins#destroy'
 
   
-
-
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
